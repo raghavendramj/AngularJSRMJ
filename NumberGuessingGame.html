@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guess The Number game!</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js"></script>
+    <script src="scripts/appgame.js"></script>
+</head>
+
+<body data-ng-app="numberGuessingApp">
+    <div class="container" data-ng-controller="GuessTheNumberController">
+        <h2>Guess the Number !</h2>
+        <p class="well lead">Guess the computer generated random number between 1 and 1000.</p>
+        <label>Your Guess: </label>
+        <input type="number" id="enteredNumber" data-ng-model="guess" />
+        <button data-ng-click="verifyGuess()" class="btn btn-primary btn-sm">Verify</button>
+        <button data-ng-click="initializeGame()" class="btn btn-warning btn-sm">Restart</button>
+        <button data-ng-click="showtheNumber()" class="btn btn-success btn-sm">Show the Number</button>
+
+        <div>
+            <p data-ng-show="deviation<0" class="alert alert-warning">Your guess is higher.</p>
+            <p data-ng-show="deviation>0" class="alert alert-warning">Your guess is lower.</p>
+            <p data-ng-show="deviation===0" class="alert alert-success">Yes! That"s it. </p>
+        </div>
+        <p class="text-info">No of guesses : <span class="badge">{{noOfTries}}</span></p>
+    </div>
+</body>
+
+</html>

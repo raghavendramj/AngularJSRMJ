@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sting Test Web App</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script>
+        angular.module("StringTestApp", [])
+            .controller("StringTestAppController", function($scope) {
+                
+                // function to evaluate if a Name is Matching of Not --> To Handle Case Sesntive.
+                $scope.isMatchingName = function(value) {
+                    if(value==""|| value=="undefined" || value == null)
+                        return false;
+                    return value.toLowerCase() === "ashray";
+                };
+
+            });
+    </script>
+</head>
+<body>
+    <div class="container" data-ng-app="StringTestApp" data-ng-controller="StringTestAppController">
+        <div class="jumbotron">
+            <h1>String Test Web App</h1>
+            <label>Please enter your name: </label>
+            <input class="form-control input-lg setWidth" id="inputlg" data-ng-model="strEnteredName" type="text" />
+            <div data-ng-hide="isMatchingName(strEnteredName)" class="alert alert-warning">{{strEnteredName}} is a not my name</div>
+            <div data-ng-show="isMatchingName(strEnteredName)" class="alert alert-success">{{strEnteredName}} Awesome name!</div>
+        </div>
+    </div>
+</body>
+</html>

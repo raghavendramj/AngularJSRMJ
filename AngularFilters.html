@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Filter</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="scripts/jquery.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#all')[0].checked = true;
+        });
+
+        angular.module('TableFilterApp', [])
+            .controller('TableFilterController', function($scope) {
+                $scope.units = [{
+                        code: 'ICT10001',
+                        desc: 'Problem Solving with ICT',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS10005',
+                        desc: 'Web Development',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF10003',
+                        desc: 'Introduction to Business Information Systems',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF10002',
+                        desc: 'Database Analysis and Design',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS10009',
+                        desc: 'Introduction to Programming',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF30029',
+                        desc: 'Information Technology Project Management',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'ICT30005',
+                        desc: 'Professional Issues in Information Technology',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'ICT30001',
+                        desc: 'Information Technology Project',
+                        type: 'Core',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS20001',
+                        desc: 'User Centred Design',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'TNE10005',
+                        desc: 'Network Administration',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS20016',
+                        desc: 'Operating System Configuration System',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'SWE20001',
+                        desc: 'Development Project 1-Tools and Practices',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS20007',
+                        desc: 'Object Oriented Programming',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS30015',
+                        desc: 'IT Security',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS30043',
+                        desc: 'Interface Design and Development',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'COS30017',
+                        desc: 'Software Development for Mobile Devices',
+                        type: 'Software Development',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF20012',
+                        desc: 'Enterprise Systems',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'ACC10007',
+                        desc: 'Financial Information for Decision Making',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF20003',
+                        desc: 'Requirements Analysis and Modelling',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'ACC20014',
+                        desc: 'Management Decision Making',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF30005',
+                        desc: 'Business Process Management',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF30003',
+                        desc: 'Business Information System Analysis',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF30020',
+                        desc: 'Information System Risk and Security',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    },
+                    {
+                        code: 'INF30001',
+                        desc: 'System Acquisition &Implementation Management',
+                        type: 'System Analysis',
+                        cp: 12.5
+                    }
+                ];
+
+            });
+    </script>
+    <style>
+        body {
+            width: 96%;
+            padding-left: 50px;
+        }
+        
+        table>thead {
+            background-color: #428bca;
+            color: white;
+        }
+        
+        .setWidth {
+            width: 500px;
+        }
+        
+        .unitType {
+            float: right;
+            padding-right: 450px;
+        }
+    </style>
+
+</head>
+
+<body data-ng-app="TableFilterApp" data-ng-controller="TableFilterController">
+    <h1>Lookup App: Unit Search Filter</h1>
+
+    <div class="table-responsive">
+        <div class="unitType">
+            <label>Unit Type</label>
+            <label class="radio"><input type="radio" data-ng-model="obj.type" value="Core">Core</label>
+            <label class="radio"><input type="radio" data-ng-model="obj.type" value="Software Development">Software Development</label>
+            <label class="radio"><input type="radio" data-ng-model="obj.type" value="System Analysis">System Analysis</label>
+            <label class="radio active"><input type="radio" id="all" data-ng-model="obj.type" value="">All</label>
+        </div>
+
+        <div class="form-group">
+            <label>Code :</label>
+            <input class="form-control input-lg setWidth" data-ng-model="obj.code" type="text">
+            <label >Description : </label>
+            <input class="form-control input-lg setWidth" data-ng-model="obj.desc" type="text">
+        </div>
+        <table class="table table-striped">
+            <thead class="tableHeader">
+                <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Credit points</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="currValue in units | filter:obj | orderBy:'desc' ">
+                    <td> {{currValue.code}}</td>
+                    <td> {{currValue.desc}}</td>
+                    <td> {{currValue.cp}}</td>
+                    <td> {{currValue.type}}</td>
+                </tr>
+                <tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
